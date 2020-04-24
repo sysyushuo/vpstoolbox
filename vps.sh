@@ -408,32 +408,32 @@ if [ ! -f /root/.trojan/config.json ]; then
 EOF
 fi
 install_status="$( jq -r '.installed' "/root/.trojan/config.json" )"
-colorEcho ${INFO} "被墙检测ing"
-colorEcho ${INFO} "test1"
-curl -s 36.110.213.10 --connect-timeout 5
-if [[ $? -ne 0 ]]; then
-	test1="0"
-	colorEcho ${WARNING} "test1 fail !"
-fi
-colorEcho ${INFO} "test2"
-curl -s 112.19.7.64 --connect-timeout 5
-if [[ $? -ne 0 ]]; then
-	test2="0"
-	colorEcho ${WARNING} "test2 fail !"
-fi
-colorEcho ${INFO} "test3"
-curl -s 120.92.174.135 --connect-timeout 5
-if [[ $? -ne 0 ]]; then
-	test3="0"
-	colorEcho ${WARNING} "test3 fail !"
-fi
+#colorEcho ${INFO} "被墙检测ing"
+#colorEcho ${INFO} "test1"
+#curl -s 36.110.213.10 --connect-timeout 5
+#if [[ $? -ne 0 ]]; then
+#	test1="0"
+#	colorEcho ${WARNING} "test1 fail !"
+#fi
+#colorEcho ${INFO} "test2"
+#curl -s 112.19.7.64 --connect-timeout 5
+#if [[ $? -ne 0 ]]; then
+#	test2="0"
+#	colorEcho ${WARNING} "test2 fail !"
+#fi
+#colorEcho ${INFO} "test3"
+#curl -s 120.92.174.135 --connect-timeout 5
+#if [[ $? -ne 0 ]]; then
+#	test3="0"
+#	colorEcho ${WARNING} "test3 fail !"
+#fi
 
-if [[ ${test1} == 0 ]] && [[ ${test2} == 0 ]] && [[ ${test3} == 0 ]] && [[ -z ${myipv6} ]]; then
-	colorEcho ${ERROR} "你的ip(v4)被墙了，滚蛋！"
-	exit 1
-fi
+#if [[ ${test1} == 0 ]] && [[ ${test2} == 0 ]] && [[ ${test3} == 0 ]] && [[ -z ${myipv6} ]]; then
+#	colorEcho ${ERROR} "你的ip(v4)被墙了，滚蛋！"
+#	exit 1
+#fi
 
-clear
+#clear
 if [[ ${install_status} == 1 ]]; then
 if (whiptail --title "Installed Detected" --defaultno --yesno "检测到已安装，是否继续?" 8 78); then
     if (whiptail --title "Installed Detected" --defaultno --yesno "检测到已安装，是否重新设置具体参数?" 8 78); then
